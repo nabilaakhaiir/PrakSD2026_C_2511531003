@@ -1,103 +1,125 @@
 package pekan1_2511531003;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Driver_2511531003 {
-	static ArrayList<Mobil_2511531003> daftarMobil = new ArrayList<>();
+	    static Mobil_2511531003[] daftarMobil = new Mobil_2511531003[100];
+	    static int jumlah = 0;
 
-    // tambah mobil
-    public static void tambahMobil_2511531003(Mobil_2511531003 mobil) {
-        daftarMobil.add(mobil);
-        System.out.println("Mobil berhasil ditambahkan!");
-    }
+	    // --- TAMBAH ---
+	    public static void tambahMobil_2511531003(Mobil_2511531003 mobil) {
 
-    // hapus mobil
-    public static void hapusMobil(String nama) {
-        boolean ditemukan = false;
+	        if (jumlah < daftarMobil.length) {
+	            daftarMobil[jumlah] = mobil;
+	            jumlah++;
+	            System.out.println("Mobil berhasil ditambahkan!");
+	        } else {
+	            System.out.println("Array penuh!");
+	        }
+	    }
 
-        for (int i = 0; i < daftarMobil.size(); i++) {
-            if (daftarMobil.get(i).getNama().equalsIgnoreCase(nama)) {
-                daftarMobil.remove(i);
-                ditemukan = true;
-                System.out.println("Mobil berhasil dihapus!");
-                break;
-            }
-        }
+	    // ---- HAPUS ----
+	    public static void hapusMobil(String nama) {
 
-        if (!ditemukan) {
-            System.out.println("Mobil tidak ditemukan!");
-        }
-    }
+	        boolean ditemukan = false;
 
-    // tampil mobil
-    public static void tampilMobil() {
-        if (daftarMobil.isEmpty()) {
-            System.out.println("Data mobil kosong.");
-        } else {
-            for (Mobil_2511531003 m : daftarMobil) {
-                m.tampil();
-            }
-        }
-    }
+	        for (int i = 0; i < jumlah; i++) {
+	            if (daftarMobil[i].getNama().equalsIgnoreCase(nama)) {
 
-    public static void main(String[] args) {
+	                // geser data ke kiri
+	                for (int j = i; j < jumlah - 1; j++) {
+	                    daftarMobil[j] = daftarMobil[j + 1];
+	                }
 
-        Scanner input = new Scanner(System.in);
-        int pilih;
+	                daftarMobil[jumlah - 1] = null;
+	                jumlah--;
 
-        do {
-            System.out.println("\n=== MENU MOBIL ===");
-            System.out.println("1. Tambah Mobil");
-            System.out.println("2. Hapus Mobil");
-            System.out.println("3. Tampilkan Mobil");
-            System.out.println("4. Keluar");
-            System.out.print("Pilih: ");
-            pilih = input.nextInt();
-            input.nextLine();
+	                ditemukan = true;
+	                System.out.println("Mobil berhasil dihapus!");
+	                break;
+	            }
+	        }
 
-            switch (pilih) {
+	        if (!ditemukan) {
+	            System.out.println("Mobil tidak ditemukan!");
+	        }
+	    }
 
-                case 1:
-                    System.out.print("Nama Mobil : ");
-                    String nama = input.nextLine();
+	    // ---- TAMPIL ----
+	    public static void tampilMobil() {
 
-                    System.out.print("Tahun : ");
-                    int tahun = input.nextInt();
+	        if (jumlah == 0) {
+	            System.out.println("Data mobil kosong.");
+	            return;
+	        }
 
-                    System.out.print("CC : ");
-                    int cc = input.nextInt();
+	        for (int i = 0; i < jumlah; i++) {
+	            System.out.println("Data ke-" + (i + 1));
+	            daftarMobil[i].tampil();
+	        }
+	    }
 
-                    System.out.print("Harga : ");
-                    double harga = input.nextDouble();
-                    input.nextLine();
+	    // ---- MAIN ----
+	    public static void main(String[] args) {
 
-                    System.out.print("Merk : ");
-                    String merk = input.nextLine();
+	        Scanner input = new Scanner(System.in);
+	        int pilih;
 
-                    Mobil_2511531003 m = new Mobil_2511531003(nama, tahun, cc, harga, merk);
-                    tambahMobil_2511531003(m);
-                    break;
+	        do {
+	            System.out.println("\n=== MENU MOBIL ===");
+	            System.out.println("1. Tambah Mobil");
+	            System.out.println("2. Hapus Mobil");
+	            System.out.println("3. Tampilkan Mobil");
+	            System.out.println("4. Keluar");
+	            System.out.print("Pilih: ");
+	            pilih = input.nextInt();
+	            input.nextLine();
 
-                case 2:
-                    System.out.print("Nama mobil yang dihapus: ");
-                    String hapus = input.nextLine();
-                    hapusMobil(hapus);
-                    break;
+	            switch (pilih) {
 
-                case 3:
-                    tampilMobil();
-                    break;
+	                case 1:
+	                    System.out.print("Nama Mobil : ");
+	                    String nama = input.nextLine();
 
-                case 4:
-                    System.out.println("Program selesai.");
-                    break;
+	                    System.out.print("Tahun : ");
+	                    int tahun = input.nextInt();
 
-                default:
-                    System.out.println("Pilihan salah!");
-            }
+	                    System.out.print("CC : ");
+	                    int cc = input.nextInt();
 
-        } while (pilih != 4);
+	                    System.out.print("Harga : ");
+	                    double harga = input.nextDouble();
+	                    input.nextLine();
 
-        input.close();
-    }
-}
+	                    System.out.print("Merk : ");
+	                    String merk = input.nextLine();
+
+	                    Mobil_2511531003 m =
+	                        new Mobil_2511531003(nama, tahun, cc, harga, merk);
+
+	                    tambahMobil_2511531003(m);
+	                    break;
+
+	                case 2:
+	                    System.out.print("Nama mobil yang dihapus: ");
+	                    String hapus = input.nextLine();
+	                    hapusMobil(hapus);
+	                    break;
+
+	                case 3:
+	                    tampilMobil();
+	                    break;
+
+	                case 4:
+	                    System.out.println("Program selesai.");
+	                    break;
+
+	                default:
+	                    System.out.println("Pilihan salah!");
+	            }
+
+	        } while (pilih != 4);
+
+	        input.close();
+	    }
+	}
+	    
