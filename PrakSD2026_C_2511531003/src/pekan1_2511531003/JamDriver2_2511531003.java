@@ -68,8 +68,5 @@ public class JamDriver2_2511531003 {
 	                    return new Jam_2511531003(h, m, s);
 	                } else {
 	                    System.out.println("[Error] Input tidak valid! Silakan ulangi.\n");
-	                
-
-	
 		 
 	}}}}
