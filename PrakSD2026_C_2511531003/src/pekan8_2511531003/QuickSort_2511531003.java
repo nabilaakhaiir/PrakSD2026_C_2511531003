@@ -2,9 +2,9 @@ package pekan8_2511531003;
 
 public class QuickSort_2511531003 {
    static void swap (int [] arr, int i, int j) {
-	   int temp = arr[i];
+	   int temp_1003 = arr[i];
 	  arr [i] = arr [j];
-	  arr [j] = temp;
+	  arr [j] = temp_1003;
    }
    //metode tambahan untuk mengatur pivot menggunakan median if three
    static void medianOfThree (int[] arr, int low, int high) {
@@ -58,11 +58,11 @@ public class QuickSort_2511531003 {
    
    public static void main(String[] args) {
 	   int[] arr = { 10, 7, 8, 9, 1, 5 };
-	   int N = arr.length;
+	   int N_1003 = arr.length;
 	   System.out.print ("Data sebelum diurutkan: ");
 	   printArr(arr);
 	   
-	   QuickSort_2511531003(arr, 0, N - 1);
+	   QuickSort_2511531003(arr, 0, N_1003 - 1);
 	   
 	   System.out.print ("Data Terurut quicksort: ");
 	   printArr(arr);
