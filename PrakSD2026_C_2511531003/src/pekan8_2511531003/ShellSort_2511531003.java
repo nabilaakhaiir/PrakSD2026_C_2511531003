@@ -3,18 +3,18 @@ package pekan8_2511531003;
 public class ShellSort_2511531003 {
 public static void ShellSort_2511531003 (int[] A) {
 	int n_1003 = A.length;
-	int gap = n_1003/2;
-	while (gap > 0) {
-		for (int i = gap; i< n_1003; i++) {
+	int gap_1003 = n_1003/2;
+	while (gap_1003 > 0) {
+		for (int i = gap_1003; i< n_1003; i++) {
 			int temp = A [i];
 			int j = i;
-			while (j >= gap && A[j - gap] > temp) {
-				A[j] = A [j - gap];
-				j = j - gap;
+			while (j >= gap_1003 && A[j - gap_1003] > temp) {
+				A[j] = A [j - gap_1003];
+				j = j - gap_1003;
 			}
 			A[j] = temp;
 		}
-		gap = gap/2 ;
+		gap_1003 = gap_1003/2 ;
 	}
 }
 
